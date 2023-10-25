@@ -1,6 +1,4 @@
-create schema another_table;
-
-create table another_table.ORDERS(
+create table my_table.ORDERS(
     id serial primary key,
     date varchar,
     customer_id integer,
@@ -8,11 +6,16 @@ create table another_table.ORDERS(
     amount integer
 );
 
-insert into another_table.ORDERS(date, customer_id, product_name, amount)
-VALUES ('23.10.23', 1, 'sword', 10);
-insert into another_table.ORDERS(date, customer_id, product_name, amount)
-VALUES ('18.10.23', 2, 'shield', 4);
-insert into another_table.ORDERS(date, customer_id, product_name, amount)
-VALUES ('08.10.23', 3, 'spear', 8);
+insert into my_table.ORDERS(date, product_name, amount)
+VALUES ('23.10.23', 'Sword', 10);
+insert into my_table.ORDERS(date, product_name, amount)
+VALUES ('18.10.23', 'Shield', 4);
+insert into my_table.ORDERS(date, product_name, amount)
+VALUES ('08.10.23', 'Spear', 8);
 
-select* from another_table.ORDERS o;
+alter table my_table.orders
+    add constraint customer_order
+    foreign key (customer_id)
+    references my_table.customers(id);
+
+select* from my_table.ORDERS o;

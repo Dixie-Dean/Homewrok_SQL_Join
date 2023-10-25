@@ -16,5 +16,3 @@ insert into my_table.CUSTOMERS(name, surname, age, phone_number)
 VALUES ('Alexey', 'Orlov', 49, '794374');
 
 select* from my_table.CUSTOMERS c;
-
-select* from another_table.ORDERS o;
